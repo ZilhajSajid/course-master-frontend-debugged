@@ -18,8 +18,8 @@ export default function CoursesPreview() {
 
         // Fetch only 6 courses for preview
         const res = await getCourses({ page: 1, limit: 6 });
-        console.log("Courses API response:", res);
-        console.log("Courses array:", res.data?.courses);
+        // console.log("Courses API response:", res);
+        // console.log("Courses array:", res.data?.courses);
         setCourses(res.data.courses || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load courses");

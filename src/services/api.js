@@ -4,6 +4,7 @@ import { getToken, clearToken } from "../utils/auth";
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
 });
+// console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
 
 // Request interceptor - automatically add token
 api.interceptors.request.use(
@@ -14,7 +15,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // Response interceptor - handle errors globally
@@ -27,7 +28,7 @@ api.interceptors.response.use(
       window.location.href = "/login";
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
